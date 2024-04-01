@@ -19,6 +19,7 @@ import (
 
 	"github.com/pressly/goose/v3"
 	"github.com/pressly/goose/v3/internal/cfg"
+	"github.com/pressly/goose/v3/internal/cli"
 	"github.com/pressly/goose/v3/internal/migrationstats"
 )
 
@@ -42,6 +43,9 @@ var (
 var version string
 
 func main() {
+	if ok, err := strconv.ParseBool(os.Getenv("GOOSE_CLI")); err == nil && ok {
+		cli.Main()
+	}
 	ctx := context.Background()
 
 	flags.Usage = usage
