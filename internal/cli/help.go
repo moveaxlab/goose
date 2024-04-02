@@ -1,6 +1,9 @@
 package cli
 
 import (
+	"os"
+	"strconv"
+
 	"github.com/charmbracelet/lipgloss"
 	"github.com/peterbourgon/ff/v4"
 	"github.com/peterbourgon/ff/v4/ffhelp"
@@ -10,15 +13,18 @@ const (
 	redColor = "#cc0000"
 )
 
-func createHelp(cmd *ff.Command, noColor bool) ffhelp.Help {
+func createHelp(cmd *ff.Command) ffhelp.Help {
 	var help ffhelp.Help
 	if selected := cmd.GetSelected(); selected != nil {
 		cmd = selected
 	}
 	style := lipgloss.NewStyle().Foreground(lipgloss.Color(redColor))
 	render := func(s string) string {
-		if noColor {
-			return s
+		// TODO(mf): should we also support a global flag to disable color?
+		if val := os.Getenv("NO_COLOR"); val != "" {
+			if ok, err := strconv.ParseBool(val); err == nil && ok {
+				return s
+			}
 		}
 		return style.Render(s)
 	}

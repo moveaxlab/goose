@@ -5,6 +5,11 @@ import (
 	"github.com/peterbourgon/ff/v4/ffval"
 )
 
+var requiredFlags = map[string]bool{
+	"dir":      true,
+	"dbstring": true,
+}
+
 func newDirFlag(s *string) ff.FlagConfig {
 	return ff.FlagConfig{
 		LongName:    "dir",
