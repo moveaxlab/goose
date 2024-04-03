@@ -46,7 +46,7 @@ This will install the `goose` binary to your `$GOPATH/bin` directory.
 For a lite version of the binary without DB connection dependent commands, use the exclusive build tags:
 
 ```shell
-go build -tags='no_postgres no_mysql no_sqlite3 no_ydb' -o goose ./cmd/goose
+go build -tags='no_postgres no_mysql no_sqlite3 no_ydb no_oracle' -o goose ./cmd/goose
 ```
 
 For macOS users `goose` is available as a [Homebrew Formulae](https://formulae.brew.sh/formula/goose#default):
@@ -81,6 +81,7 @@ Drivers:
     clickhouse
     vertica
     ydb
+    oracle
 
 Examples:
     goose sqlite3 ./foo.db status
@@ -97,12 +98,14 @@ Examples:
     goose clickhouse "tcp://127.0.0.1:9000" status
     goose vertica "vertica://user:password@localhost:5433/dbname?connection_load_balance=1" status
     goose ydb "grpcs://localhost:2135/local?go_query_mode=scripting&go_fake_tx=scripting&go_query_bind=declare,numeric" status
+    goose oracle "oracle://user:password@localhost:1521/SERVICE?SSL=false" status
 
     GOOSE_DRIVER=sqlite3 GOOSE_DBSTRING=./foo.db goose status
     GOOSE_DRIVER=sqlite3 GOOSE_DBSTRING=./foo.db goose create init sql
     GOOSE_DRIVER=postgres GOOSE_DBSTRING="user=postgres dbname=postgres sslmode=disable" goose status
     GOOSE_DRIVER=mysql GOOSE_DBSTRING="user:password@/dbname" goose status
     GOOSE_DRIVER=redshift GOOSE_DBSTRING="postgres://user:password@qwerty.us-east-1.redshift.amazonaws.com:5439/db" goose status
+    GOOSE_DRIVER=oracle GOOSE_DBSTRING="oracle://user:password@localhost:1521/SERVICE?SSL=false" goose status
 
 Options:
 

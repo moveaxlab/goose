@@ -12,6 +12,11 @@ func NewPostgres(options ...OptionsFunc) (db *sql.DB, cleanup func(), err error)
 	return newPostgres(options...)
 }
 
+// NewOracle starts a Oracle DB docker container. Returns db connection and a docker cleanup function.
+func NewOracle(options ...OptionsFunc) (db *sql.DB, cleanup func(), err error) {
+	return newOracle(options...)
+}
+
 // NewMariaDB starts a MariaDB docker container. Returns a db connection and a docker cleanup function.
 func NewMariaDB(options ...OptionsFunc) (db *sql.DB, cleanup func(), err error) {
 	return newMariaDB(options...)

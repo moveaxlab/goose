@@ -367,7 +367,7 @@ func (e *envWrapper) Get(key string) (string, bool) {
 }
 
 func cleanupStatement(input string) string {
-	return strings.TrimSpace(input)
+	return strings.TrimSuffix(strings.TrimSpace(input), ";")
 }
 
 // Checks the line to see if the line has a statement-ending semicolon

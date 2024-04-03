@@ -9,6 +9,7 @@ require (
 	github.com/ory/dockertest/v3 v3.10.0
 	github.com/pressly/goose/v3 v3.19.2
 	github.com/sethvargo/go-retry v0.2.4
+	github.com/sijms/go-ora/v2 v2.8.10
 	github.com/stretchr/testify v1.9.0
 	github.com/tursodatabase/libsql-client-go v0.0.0-20240220085343-4ae0eb9d0898
 	github.com/vertica/vertica-sql-go v1.3.3

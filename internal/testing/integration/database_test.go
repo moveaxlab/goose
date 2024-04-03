@@ -193,3 +193,14 @@ func TestYDB(t *testing.T) {
 
 	testDatabase(t, database.DialectYdB, db, "testdata/migrations/ydb")
 }
+
+func TestOracle(t *testing.T) {
+	t.Parallel()
+
+	db, cleanup, err := testdb.NewOracle()
+	require.NoError(t, err)
+	t.Cleanup(cleanup)
+	require.NoError(t, db.Ping())
+
+	testDatabase(t, database.DialectOracle, db, "testdata/migrations/oracle")
+}
