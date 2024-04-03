@@ -253,6 +253,7 @@ Drivers:
     vertica
     ydb
     turso
+    oracle
 
 Examples:
     goose sqlite3 ./foo.db status
@@ -270,6 +271,7 @@ Examples:
     goose vertica "vertica://user:password@localhost:5433/dbname?connection_load_balance=1" status
     goose ydb "grpcs://localhost:2135/local?go_query_mode=scripting&go_fake_tx=scripting&go_query_bind=declare,numeric" status
 	goose turso "libsql://dbname.turso.io?authToken=token" status
+    goose oracle "oracle://user:password@localhost:1521/SERVICE?SSL=false" status
 
     GOOSE_DRIVER=sqlite3 GOOSE_DBSTRING=./foo.db goose status
     GOOSE_DRIVER=sqlite3 GOOSE_DBSTRING=./foo.db goose create init sql
@@ -277,6 +279,7 @@ Examples:
     GOOSE_DRIVER=mysql GOOSE_DBSTRING="user:password@/dbname" goose status
     GOOSE_DRIVER=redshift GOOSE_DBSTRING="postgres://user:password@qwerty.us-east-1.redshift.amazonaws.com:5439/db" goose status
     GOOSE_DRIVER=turso GOOSE_DBSTRING="libsql://dbname.turso.io?authToken=token" goose status
+    GOOSE_DRIVER=oracle GOOSE_DBSTRING="oracle://user:password@localhost:1521/SERVICE?SSL=false" goose status
 
 Options:
 `
