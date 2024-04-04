@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	ORACLE_IMAGE   = "container-registry.oracle.com/database/free:latest"
+	ORACLE_IMAGE   = "container-registry.oracle.com/database/free"
 	ORACLE_VERSION = "latest"
 
 	ORACLE_PASSWORD = "password"
