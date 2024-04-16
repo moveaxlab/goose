@@ -5,11 +5,11 @@ go 1.20
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.17.1
 	github.com/go-sql-driver/mysql v1.8.1
+	github.com/godror/godror v0.42.1
 	github.com/jackc/pgx/v5 v5.5.5
 	github.com/mfridman/interpolate v0.0.2
 	github.com/microsoft/go-mssqldb v1.7.0
 	github.com/sethvargo/go-retry v0.2.4
-	github.com/sijms/go-ora/v2 v2.8.10
 	github.com/tursodatabase/libsql-client-go v0.0.0-20240411070317-a1138d155304
 	github.com/vertica/vertica-sql-go v1.3.3
 	github.com/ydb-platform/ydb-go-sdk/v3 v3.55.1
@@ -29,6 +29,8 @@ require (
 	github.com/elastic/go-windows v1.0.1 // indirect
 	github.com/go-faster/city v1.0.1 // indirect
 	github.com/go-faster/errors v0.6.1 // indirect
+	github.com/go-logfmt/logfmt v0.6.0 // indirect
+	github.com/godror/knownpb v0.1.1 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect

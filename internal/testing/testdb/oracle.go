@@ -4,11 +4,12 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"net"
+	"net/url"
 	"strconv"
 
 	"github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"
-	go_ora "github.com/sijms/go-ora/v2"
 )
 
 const (
@@ -66,7 +67,13 @@ func newOracle(opts ...OptionsFunc) (*sql.DB, func(), error) {
 	if err != nil {
 		return nil, nil, fmt.Errorf("failed to parse container port: %w", err)
 	}
-	uri := go_ora.BuildUrl("localhost", containerPort, "FREE", "system", ORACLE_PASSWORD, nil)
+	uri := fmt.Sprintf(
+		"oracle://%s:%s@%s/%s?SSL=false",
+		url.PathEscape("SYSTEM"),
+		url.PathEscape(ORACLE_PASSWORD),
+		net.JoinHostPort("localhost", strconv.Itoa(containerPort)),
+		url.PathEscape("FREE"),
+	)
 	var db *sql.DB
 	// Exponential backoff-retry, because the application in the container
 	// might not be ready to accept connections yet.
